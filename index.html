@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css">
     <title>Home - Lifestyle Vibes</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       body {
         background-color: #121212;
@@ -22,12 +24,12 @@
       .navbar-toggler-icon {
         filter: invert(1);
       }
-      .btn-primary {
+      .btn-dark {
         background-color: #000; 
         color: #fff; 
         border: 1px solid #000;
       }
-      .btn-primary:hover, .btn-primary:focus {
+      .btn-dark:hover, .btn-dark:focus {
         background-color: #fff; 
         color: #000;
         border-color: #000; 
@@ -57,6 +59,18 @@
       .navbar-brand strong {
         font-size: 28px; 
       }
+      
+      #wellness-chart-container {
+        background-color: #1f1f1f;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      .carousel-caption p{
+        color: #000000;
+        font-weight: bold;
+      }
+
     </style>
   </head>
   <body>
@@ -89,7 +103,7 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary" href="subscribe.html" role="button"
+              <a class="btn btn-dark" href="subscribe.html" role="button"
                 >Subscribe</a
               >
             </li>
@@ -121,16 +135,100 @@
               <a href="https://unsplash.com" target="_blank">Photo from Unsplash</a>
             </figcaption>
           </figure>
+
           <h3 class="mt-4">Latest in Wellness</h3>
           <p>
             Discover the latest trends in wellness, from meditation techniques
             to fitness tips that keep you grounded and healthy.
           </p>
+
+          <!-- Graph -->
+          <div id="wellness-chart-container">
+            <h3 class="text-center">Health and Wellness Spending Trends (%)</h3>
+            <canvas id="wellnessChart"></canvas>
+          </div>
+          <br>
+          <div class="text-center">
+            <h5>Source: Lifestyle Wellness Survey, Aug 2024</h5>
+          </div>
+
           <h3 class="mt-4">Explore Fashion & Trends</h3>
           <p>
             Stay ahead in fashion with insights into what's trending,
             sustainable fashion tips, and more.
           </p>
+
+          <!-- Carousel Gambar -->
+          <div id="fashionCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="https://www.studiosuits.com/cdn/shop/articles/main-image_86c2e5e3-b905-46d5-990f-5f598c7326c0_1100x.jpg?v=1710233966"
+                  class="d-block w-auto mx-auto"
+                  alt="Fashion Image 1"
+                  style="max-height: 400px;"
+                />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Summer Fashion Trends</h5>
+                  <p>Bright colors and lightweight fabrics are in this season.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://cf.ltkcdn.net/life/style/images/orig/344071-2121x1414-fallfashion1-1371187322.jpg"
+                  class="d-block w-auto mx-auto"
+                  alt="Fashion Image 2"
+                  style="max-height: 400px;"
+                />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Autumn Fashion</h5>
+                  <p>Master the art of layering with cozy, stylish pieces.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://thedailyguardian.com/wp-content/uploads/2024/01/Untitled-design-1-42.jpg"
+                  class="d-block w-auto mx-auto"
+                  alt="Fashion Image 3"
+                  style="max-height: 400px;"
+                />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Winter Fashion</h5>
+                  <p>Warmth is the most precious assets with fabrics that made for winter.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://hips.hearstapps.com/hmg-prod/images/best-spring-fashion-1618414897.jpg"
+                  class="d-block w-auto mx-auto"
+                  alt="Fashion Image 4"
+                  style="max-height: 400px;"
+                />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Spring Fashion</h5>
+                  <p>A spring collection featuring light fabrics, soft pastels, and floral prints for a fresh, breezy style.</p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#fashionCarousel"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#fashionCarousel"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </section>
       </div>
     </main>
@@ -164,7 +262,7 @@
               />
             </div>
             <div class="col-md-2">
-              <button type="submit" class="btn btn-primary w-100" onclick="event.preventDefault(); window.location.href='subscribe.html';">
+              <button type="submit" class="btn btn-dark w-100" onclick="event.preventDefault(); window.location.href='subscribe.html';">
                 Subscribe
               </button>
             </div>
@@ -178,10 +276,75 @@
         <a href="#">Privacy Policy</a> •
         <a href="#">Terms & Conditions</a>
       </small>
+      <br>
+      <br>
+      <div class="text-center">
+        <h6>Made By Jason Adriankho 535230008 | Copyright @ 2024 Jason Adriankho | Lifestyle Vibes. All Rights Reserved</h6>
+      </div>
     </footer>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- script js -->
+    <script>
+      const ctx = document.getElementById('wellnessChart').getContext('2d');
+      const wellnessChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Appearance', 'Health', 'Fitness', 'Nutrition', 'Sleep', 'Mindfulness'],
+          datasets: [
+            {
+              label: 'Gen Z',
+              data: [50, 40, 30, 20, 15, 10],
+              backgroundColor: '#000000',
+              borderColor: '#000000',
+              borderWidth: 1,
+            },
+            {
+              label: 'Millennials',
+              data: [45, 35, 25, 22, 18, 12],
+              backgroundColor: '#ffffff',
+              borderColor: '#ffffff',
+              borderWidth: 1,
+            },
+            {
+              label: 'Overall Average',
+              data: [47, 38, 28, 21, 17, 11],
+              backgroundColor: '#777777',
+              borderColor: '#777777',
+              borderWidth: 1,
+            }
+          ]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: '#f8f9fa'
+              },
+              grid: {
+                color: '#444'
+              }
+            },
+            x: {
+              ticks: {
+                color: '#f8f9fa'
+              },
+              grid: {
+                color: '#444'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: '#f8f9fa'
+              }
+            }
+          }
+        }
+      });
+    </script>
   </body>
 </html>
